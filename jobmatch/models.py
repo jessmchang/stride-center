@@ -69,7 +69,7 @@ def send_match_emails(sender, instance, created, **kwargs):
 		profiles = UserProfile.objects.all()
 		for profile in profiles:
 			if profile.location_range.is_in_radius(instance.location):
-				send_mail('New Job Opportunity!', 'Check out this cool new job.', 'smitha.milli@gmail.com',
+				send_mail('New Job Opportunity!', 'Check out this cool new job.', 'stridecenter1@gmail.com',
 				[profile.user.email], fail_silently=False)
 
 post_save.connect(send_match_emails, sender=Job)

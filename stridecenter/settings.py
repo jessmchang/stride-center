@@ -126,5 +126,5 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'stridecenter1@gmail.com'
 assert 'EMAIL_PASS' in os.environ, 'Set EMAIL_PASS in your .env file!'
 EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASS']
-EMAIL_PORT = 465
+EMAIL_PORT = 587
 EMAIL_USE_TSL = True
