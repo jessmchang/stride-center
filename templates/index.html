@@ -7,28 +7,28 @@
     <script src="{{ STATIC_URL }}bower_components/modernizr/modernizr.js"></script>
   </head>
   <body>
-    <div class="row">
-    <div class="large-12 columns">
-      <h2>Welcome to Foundation</h2>
-      <p>This is version 5.</p>
-      
-      <hr />
-    </div>
-  </div>
+
+
+  <div class = "row">
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+  </div>  
   <div class = "row">
     <form method="POST" action="">
       {% csrf_token %}
-      <div class = "large-4 columns">
-        Log in to your account!
+      <div class="small-8 large-3 small-centered columns">
+         <center><img src = "/static/img/logo.png" /></center>
         <hr />
         {{ login_form.as_p }}
-           <input class="button" type="submit" value="Login" />
-      </div>
-    </form>
+        <br />
+           <center><input class="button" type="submit" value="Login" /></center>
 
-    <div class = "large-4 columns">
-      
-    </div>
+         </div>
+    </form>
 
   </div>
 
