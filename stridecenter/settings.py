@@ -117,3 +117,5 @@ TEMPLATE_CONTEXT_PROCESSORS = TCP + (
  
 LOGIN_REDIRECT_URL = 'jobmatch.views.user_login'
 LOGIN_URL = 'jobmatch.views.user_login'
+
+AUTH_PROFILE_MODULE = 'jobmatch.UserProfile'
