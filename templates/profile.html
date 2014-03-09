@@ -5,18 +5,17 @@
   {% block content %}
     <div class="row">
       <div class="small-12 columns">
-        <h1>Profile</h1>
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
       </div>
     </div>
 
     <div class="row">
       <div class="small-12 large-4 columns">
-        <p>Picture
           <img src = "{{ STATIC_URL }}img/placement.gif"></img>
 
         </p>
         <dl style="width: 100%" class="tabs vertical" data-tab>
-          <dd class="active"><a href="#panel1a">{{user.first_name}} {{user.last_name}}</a></dd>
+          <dd class="active"><a href="#panel1a">Profile</a></dd>
           <dd><a href="#panel3a">Account Settings</a></dd>
           <!-- <dd><a href="#panel4a">Tab 4</a></dd> -->
         </dl>
@@ -25,15 +24,15 @@
       <div class="small-12 large-8 columns">
         <div class="tabs-content vertical" style="width: 100%">
           <div class="content active" id="panel1a">
-            <p>Address: </p>
-            <p>Email: </p>
-            <p>Phone: </p>
+            <p>Address: {{ user.address }}</p>
+            <p>Email: {{ user.email }}</p>
+            <p>Phone: {{ user.phone }}</p>
             Resume
           </div>
           <div class="content" id="panel3a">
               <!-- Content in third side panel -->
               <dl class="tabs" data-tab>
-                <dd class="active"><a href="#panel2-1">Profile</a></dd>
+                <dd class="active"><a href="#panel2-1">Preferences</a></dd>
                 <dd><a href="#panel2-2">Contact Info</a></dd>
               </dl>
               <div class="tabs-content">
