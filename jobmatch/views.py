@@ -27,6 +27,7 @@ class RegisterForm(forms.Form):
 
 	    return self.cleaned_data
 
+@public_only
 def user_login(request):
 	if request.POST:
 		login_form = LoginForm(request.POST)
