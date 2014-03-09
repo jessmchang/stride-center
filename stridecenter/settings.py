@@ -119,3 +119,12 @@ LOGIN_REDIRECT_URL = 'jobmatch.views.user_login'
 LOGIN_URL = 'jobmatch.views.user_login'
 
 AUTH_PROFILE_MODULE = 'jobmatch.UserProfile'
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'stridecenter1@gmail.com'
+assert 'EMAIL_PASS' in os.environ, 'Set EMAIL_PASS in your .env file!'
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASS']
+EMAIL_PORT = 465
+EMAIL_USE_TSL = True
