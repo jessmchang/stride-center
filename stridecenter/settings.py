@@ -99,6 +99,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# For file uploads
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+MEDIA_URL = '/media/'
+
 SUIT_CONFIG = {
     'ADMIN_NAME': 'Stride Center Admin'
 }

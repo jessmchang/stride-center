@@ -93,7 +93,7 @@ class UserProfile(models.Model):
 	entry_level = models.BooleanField(default=True)
 	advanced = models.BooleanField(default=False)
 
-	# resume = models.FileField()
+	resume = models.FileField(upload_to='resumes/%Y/%m/%d', blank=True, null=True)
 
 	# notifications
 	text_notifications = models.BooleanField(default=False)

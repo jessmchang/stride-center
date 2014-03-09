@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     url(r'^dashboard/', 'jobmatch.views.dashboard'),
     url(r'^profile/', 'jobmatch.views.profile'),
     url(r'^prefs/', 'jobmatch.views.edit_prefs'),
+    url(r'^contact/', 'jobmatch.views.update_contact'),
     url(r'^register/', 'jobmatch.views.register'),
     url(r'^$', 'jobmatch.views.user_login'),
 )

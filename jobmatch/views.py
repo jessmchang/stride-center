@@ -101,8 +101,8 @@ def profile(request):
 
 @login_required
 def edit_prefs(request):
-	profile = request.user.get_profile()
 	if request.POST:
+		profile = request.user.get_profile()
 		profile.location_range.zipcode = int(request.POST['zipcode']) if request.POST['zipcode'] else profile.location_range.zipcode
 		profile.location_range.radius = int(request.POST['range']) if request.POST['range'] else profile.location_range.radius
 		profile.location_range.save()
@@ -110,3 +110,19 @@ def edit_prefs(request):
 	return redirect('/profile/', {'user': request.user, 
 		'profile': request.user.get_profile(),
 		'location_range': request.user.get_profile().location_range})
+
+@login_required
+def update_contact(request):
+	if request.POST:
+		profile = request.user.get_profile()
+		if request.POST.get('email', False): 
+			user.email = request.POST['email']
+		if request.POST.get('phone', False): 
+			profile.phone = int(request.POST['phone'])
+		if request.POST.get('address', False): 
+			profile.address = request.POST['address']
+		if request.FILES.get('resume', False): 
+			profile.resume = request.FILES['resume']
+		request.user.save()
+		profile.save()
+	return redirect('/profile/')
