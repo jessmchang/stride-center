@@ -114,3 +114,5 @@ TEMPLATE_DIRS = (
 TEMPLATE_CONTEXT_PROCESSORS = TCP + (
     'django.core.context_processors.request',
 )
+
+LOGIN_URL = 'jobmatch.views.user_login'
