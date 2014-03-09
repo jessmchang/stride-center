@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/app.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/animate.css" />
     <script src="{{ STATIC_URL }}bower_components/modernizr/modernizr.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300|Montserrat' rel='stylesheet' type='text/css'>
   </head>
@@ -21,8 +22,8 @@
   <div class = "row">
     <form method="POST" action="">
       {% csrf_token %}
-      <div class="small-8 large-3 small-centered columns">
-         <center><img src = "/static/img/logo.png" /></center>
+      <div class="small-8 large-3 small-centered columns ">
+         <center><img src = "/static/img/logo.png" class="animated fadeInDown"/></center>
         <hr />
         {{ login_form.as_p }}
          <center>New user? Sign up <a href = "/register/">here</a>.</center>
