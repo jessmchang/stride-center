@@ -3,12 +3,15 @@
   {% block title %} Profile {% endblock %}
 
   {% block content %}
+  <header>
     <div class="row">
       <div class="small-12 columns">
         <h1>{{user.first_name}} {{user.last_name}}</h1>
       </div>
     </div>
+    </header>
 
+    <section id = "main-content">
     <div class="row">
       <div class="small-12 large-4 columns">
           <img src = "{{ STATIC_URL }}img/placement.gif"></img>
@@ -142,7 +145,7 @@
       </div>
 
     </div>
-
+  </section>
 
     
   
