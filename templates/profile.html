@@ -27,10 +27,22 @@
       <div class="small-12 large-8 columns">
         <div class="tabs-content vertical" style="width: 100%">
           <div class="content active" id="panel1a">
+            <strong>Contact Information</strong>
             <p>{% if user.email %} Email: {{ user.email }} {% endif %}</p>
             <p>{% if profile.address %} Address: {{ profile.address }} {% endif %}</p>
             <p>{% if profile.phone %} Phone Number: {{ profile.phone }} {% endif %}</p>
-            <p>{% if location_range.zipcode %} I'm looking for jobs within {{ location_range.radius }} miles of {{ location_range.zipcode }} {% endif %}</p>
+
+            <strong>Job Preferences</strong>
+            <p>Currently Searching?  {% if profile.currently_searching %} Yes {% else %} No {% endif %}</p>
+            <p>Type of Positions: 
+              {% if profile.full_time %} <li>Full Time</li> {% endif %} 
+              {% if profile.part_time %} <li>Part Time</li> {% endif %}</p>
+            <p>Skill Level:
+              {% if profile.entry_level %} <li>Entry Level</li> {% endif %}
+              {% if profile.advanced %} <li>Advanced</li> {% endif %}
+            </p>
+            <p>Location:
+            {% if location_range.zipcode %} I'm looking for jobs within {{ location_range.radius }} miles of {{ location_range.zipcode }} {% else %} Not Specified{% endif %}</p>
             Resume
           </div>
           <div class="content" id="panel3a">
