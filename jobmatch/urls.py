@@ -7,5 +7,5 @@ urlpatterns = patterns('',
     url(r'^dashboard/', 'jobmatch.views.dashboard'),
     url(r'^profile/', 'jobmatch.views.profile'),
     url(r'^register/', 'jobmatch.views.register'),
-    url(r'^$', 'jobmatch.views.login'),
+    url(r'^$', 'jobmatch.views.user_login'),
 )
