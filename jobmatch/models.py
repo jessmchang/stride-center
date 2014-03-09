@@ -1,15 +1,24 @@
 from django.contrib.auth.models import User
 from django.db import models
 from localflavor.us.models import USStateField
+import requests
 
 class Location(models.Model):
-	address = models.CharField(max_length=50)
-	city = models.CharField(max_length=25)
-	state = USStateField()
-	zipcode = models.IntegerField()
+	address = models.CharField(blank=False, max_length=200)
+
+	def get_lat_lng(self):
+		if self.lat and self.lng:
+			return (self.lat, self.lng)
+		data = {'address' : self.address, 'sensor' : 'false'}
+		resp = requests.get("http://maps.googleapis.com/maps/api/geocode/json", params=data).json()
+		if (resp['status']!='OK'):
+			raise Exception('Invalid address')
+		self.lat = resp.geometry.lat
+		self.lng = resp.geometry.lng
+		return (self.lat, self.lng)
 
 	def __str__(self):
-		return self.address + ', ' + self.city + ', ' + self.state + ' ' + str(self.zipcode)
+		return self.address
 
 class Company(models.Model):
 	name = models.CharField(max_length=50)
