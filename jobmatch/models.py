@@ -1,10 +1,11 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.contrib.localflavor.us.models import USStateField
 
 class Location(models.Model):
 	address = models.CharField(max_length=50)
 	city = models.CharField(max_length=25)
-	state = models.CharField(max_length=25)
+	state = USStateField()
 	zipcode = models.IntegerField()
 
 	def __str__(self):
