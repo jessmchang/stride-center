@@ -35,6 +35,7 @@ class RegisterForm(forms.Form):
 
 	    return self.cleaned_data
 
+
 @public_only
 def user_login(request):
 	if request.POST:
@@ -52,6 +53,12 @@ def user_login(request):
 		{ 'login_form': login_form },
 		context_instance=RequestContext(request))
 
+
+def user_logout(request):
+	logout(request)
+	return render_to_response('index.html', context_instance=RequestContext(request))
+
+@public_only
 def register(request):
 	if request.POST:
 		register_form = RegisterForm(request.POST)
@@ -76,25 +83,6 @@ def register(request):
 		{ 'register_form': register_form }, 
 		context_instance=RequestContext(request))
 
-def is_admin(request):
-	return user.is_staff
-
-def create_user(request):
-	if request.POST:
-		user = User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
-		login(request, user)
-		redirect('dashboard')
-
-def create_admin(request):
-	create_superuser(request.POST['username'], request.POST['email'], request.POST['password'])
-
-def email_user(request):
-	request.POST['user'].email_user(request.POST['subject'], request.POST['message'])
-
-def user_logout(request):
-	logout(request)
-	return render_to_response('index.html', context_instance=RequestContext(request))
-
 @login_required
 def dashboard(request):
 	jobs = Job.objects.all()
@@ -106,3 +94,10 @@ def profile(request):
 	return render_to_response('profile.html', 
 		{'user': request.user, 'profile': request.user.get_profile()}, 
 		context_instance=RequestContext(request))
+
+@login_required
+def edit_prefs(request):
+	print('edit')
+	if request.POST:
+		print(request.POST)
+	return redirect('/profile/')
