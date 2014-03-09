@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.core.mail import send_mail
 from localflavor.us.models import USStateField
+from haversine import haversine
 import requests
 
 class Location(models.Model):
@@ -20,6 +22,26 @@ class Location(models.Model):
 	def __str__(self):
 		return self.address
 
+
+class UserLocationRange(models.Model):
+	zipcode = models.IntegerField(blank=False)
+	# of miles from zipcode
+	radius = models.IntegerField(blank=False)
+
+	def get_lat_lng(self):
+		if self.lat and self.lng:
+			return (self.lat, self.lng)
+		data = {'address' : self.address, 'sensor' : 'false'}
+		resp = requests.get("http://maps.googleapis.com/maps/api/geocode/json", params=data).json()
+		if (resp['status']!='OK'):
+			raise Exception('Invalid address')
+		self.lat = resp.geometry.lat
+		self.lng = resp.geometry.lng
+		return (self.lat, self.lng)
+
+	def is_in_radius(self, job_location):
+		return haversine(self.get_lat_lng(), job_location.get_lat_lng(), miles=True) < self.radius
+
 class Company(models.Model):
 	name = models.CharField(max_length=50)
 
@@ -36,10 +58,16 @@ class Job(models.Model):
 
 	def __init__(self, *args, **kwargs):
 		super(Job, self).__init__(*args, **kwargs)
+		# auto email students that match
+		users = User.objects.all()
+		for user in users:
+			if user.location.is_in_radius(self.location):
+				send_mail('New Job Opportunity!', 'Check out this cool new job.', 'smitha.milli@gmail.com',
+    			[user.email], fail_silently=False)
+
 
 	def __str__(self):
 		return self.company.name + ': ' + self.title
-
 
 # a job a student gained from a 3rd party
 class StudentJob(Job):
@@ -62,6 +90,6 @@ class UserProfile(models.Model):
 	# resume = models.FileField()
 
 	# location student is interested in finding jobs in
-	# location = 
+	location_range = models.ForeignKey(UserLocationRange)
 
 	jobs = models.ManyToManyField(StudentJob)
