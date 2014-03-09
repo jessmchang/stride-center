@@ -75,13 +75,12 @@ def login_user(request):
 		#send them an error
 		pass
 
-def logout_user(request):
-	# logout(request)
-	pass
-
 def email_user(request):
 	request.POST['user'].email_user(request.POST['subject'], request.POST['message'])
 
+def logout_user(request):
+	logout(request)
+	return render_to_response('index.html', context_instance=RequestContext(request))
 
 @login_required
 def dashboard(request):
