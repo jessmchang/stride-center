@@ -9405,27 +9405,35 @@ th.hide-for-touch {
 
 /* line 42, ../scss/app.scss */
 header {
-  background-color: #FFF0A5;
+  background-color: #4A545F;
   padding: 22px 0;
 }
 
 /* line 47, ../scss/app.scss */
-h1, input, button, .button, .font, .tabs dd > a {
+h1, input, .font, .tabs dd > a {
   font-family: 'Montserrat', sans-serif;
+  color: #C1B5AB;
 }
 
-/* line 51, ../scss/app.scss */
+/* line 52, ../scss/app.scss */
 body, label, p {
   font-family: 'Open Sans', serif;
 }
 
-/* line 55, ../scss/app.scss */
+/* line 56, ../scss/app.scss */
 #main-content {
   margin: 44px 0 22px;
   padding-bottom: 22px;
 }
 
-/* line 60, ../scss/app.scss */
+/* line 61, ../scss/app.scss */
 .nav-color {
-  background-color: #468966;
+  background-color: #384751;
+}
+
+/* line 65, ../scss/app.scss */
+button, .button, .top-bar-section ul li > a {
+  font-family: 'Montserrat', sans-serif;
+  color: #C1B5AB;
+  background: #539987;
 }

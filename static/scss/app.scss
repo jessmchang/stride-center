@@ -40,12 +40,13 @@
 //   "foundation/components/visibility";
 
 header{
-	background-color:#FFF0A5;
+	background-color:#4A545F;
 	padding: 22px 0;
 }
 
-h1, input, button, .button, .font, .tabs dd > a{
+h1, input, .font, .tabs dd > a{
 	font-family: 'Montserrat', sans-serif;
+	color: #C1B5AB;
 }
 
 body, label, p{
@@ -58,5 +59,12 @@ body, label, p{
 }
 
 .nav-color{
-	background-color: #468966;
+	background-color: #384751;
 }
+
+button, .button, .top-bar-section ul li > a{
+	font-family: 'Montserrat', sans-serif;
+	color: #C1B5AB;
+	background: #539987;
+}
+
