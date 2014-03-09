@@ -27,9 +27,10 @@
       <div class="small-12 large-8 columns">
         <div class="tabs-content vertical" style="width: 100%">
           <div class="content active" id="panel1a">
-            <p>Address: {{ user.address }}</p>
-            <p>Email: {{ user.email }}</p>
-            <p>Phone: {{ user.phone }}</p>
+            <p>{% if user.email %} Email: {{ user.email }} {% endif %}</p>
+            <p>{% if profile.address %} Address: {{ profile.address }} {% endif %}</p>
+            <p>{% if profile.phone %} Phone Number: {{ profile.phone }} {% endif %}</p>
+            <p>{% if location_range %} Phone Number: {{ profile.phone }} {% endif %}</p>
             Resume
           </div>
           <div class="content" id="panel3a">

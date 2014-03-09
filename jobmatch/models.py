@@ -63,12 +63,11 @@ class Job(models.Model):
 	def __init__(self, *args, **kwargs):
 		super(Job, self).__init__(*args, **kwargs)
 		# auto email students that match
-		users = UserProfile.objects.all()
-		for user in users:
-			profile = user.get_profile()
-			if profile.location_range.is_in_radius(self.location):
+		profiles = UserProfile.objects.all()
+		for profile in profiles:
+			if profile.location_range and profile.location_range.is_in_radius(self.location):
 				send_mail('New Job Opportunity!', 'Check out this cool new job.', 'smitha.milli@gmail.com',
-    			[user.email], fail_silently=False)
+    			[profile.user.email], fail_silently=False)
 
 
 	def __str__(self):
