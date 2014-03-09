@@ -27,7 +27,7 @@
       <div class="small-12 large-8 columns">
         <div class="tabs-content vertical" style="width: 100%">
           <div class="content active" id="panel1a">
-            <strong>Contact Information</strong>
+            <p class="header">Contact Information</p>
             <p>{% if user.email %} Email: {{ user.email }} {% endif %}</p>
             <p>{% if profile.address %} Address: {{ profile.address }} {% endif %}</p>
             <p>{% if profile.phone %} Phone Number: {{ profile.phone }} {% endif %}</p>
@@ -58,13 +58,13 @@
                     <!-- Location -->
                     <div class="row">
                       <div class="large-6 columns">
-                        <label>Where are you looking to find a job?
+                        <label class="header">Where are you looking to find a job?</label>
                           <input name="zipcode" type="text" 
                           placeholder="{% if location_range.zipcode %} {{ location_range.zipcode }} {% else %} Zip Code: 94720 {% endif %}"></input>
-                        </label>
+                        
                       </div>
                       <div class="large-6 columns">
-                        <label>Range
+                        <label class="header">Range</label>
                           <select name="range">
                             <option value="5">5 mi</option>
                             <option value="10">10 mi</option>
@@ -73,12 +73,13 @@
                             <option value="40">40 mi</option>
                             <option value="50">50 mi</option>
                           </select>
-                        </label>
+                        
                       </div>
                     </div>
                     <!-- Full-time / Part-time -->
                     <div class="row">
                        <div class="large-6 columns">
+                        <label class="header">Full time or Part time?</label>
                         <input type="checkbox" name="full_time" {% if profile.full_time %} checked {% endif %}>
                         <label>Full-time</label>
                         <input type="checkbox" name="part_time" value="part_time" {% if profile.part_time %} checked {% endif %}>
@@ -88,28 +89,17 @@
                     <!-- Experience Level -->
                     <div class="row">
                       <div class="large-6 columns">
-                        <label>Experience Level</label>
+                        <label class="header">Experience Level</label>
                         <input type="checkbox" {% if profile.entry_level %} checked {% endif %}/>
                         <label>Entry Level</label>
                         <input type="checkbox" {% if profile.advanced %} checked {% endif %}>
                         <label>Advanced</label>
                       </div>
                     </div>
-                    
-                    <!-- Emails/Text Notifications -->
+                    <!-- Currently looking for? -->
                     <div class = "row">
                       <div class="large-6 columns">
-                        <label>Notifications</label>
-                        <input type="checkbox" name="text_notifications" {% if profile.text_notifications %} checked {% endif %}>
-                        <label>Texts</label>
-                        <input type="checkbox" name="email_notifications" {% if profile.email_notifications %} checked {% endif %}>
-                        <label>E-mails</label>
-                      </div>
-
-
-                    <!-- Currently looking for? -->
-                      <div class="large-6 columns">
-                        <label>Currently searching for a job?</label>
+                        <label class="header">Currently searching for a job?</label>
                         <input type="radio" name="currently_searching" value="Yes" id="Yes" 
                         {% if profile.currently_searching %} checked {% endif %}>
                         <label for="Yes">Yes</label>
@@ -118,10 +108,20 @@
                         <label for="No">No</label>
                       </div>
                     </div>
+                    <!-- Emails/Text Notifications -->
+                    <div class = "row">
+                      <div class="large-6 columns">
+                        <label class="header">Notifications</label>
+                        <input type="checkbox" name="text_notifications" {% if profile.text_notifications %} checked {% endif %}>
+                        <label>Texts</label>
+                        <input type="checkbox" name="email_notifications" {% if profile.email_notifications %} checked {% endif %}>
+                        <label>E-mails</label>
+                      </div>
+                    </div>
 
                     <div class = "row">
                       <div class="large-4 columns">
-                        <input type="submit" class="button" />
+                        <input type="submit" class="button" value="Update"/>
                       </div>
                     </div>
                   </form>
@@ -163,7 +163,7 @@
                       </div>
                     </div>
 
-                    <input type="submit" class="button" />
+                    <input type="submit" class="button" value="Update"/>
 
                   </form>
                 </div>
