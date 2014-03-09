@@ -1,18 +1,8 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/app.css" />
-    <script src="{{ STATIC_URL }}bower_components/modernizr/modernizr.js"></script>
-  </head>
-  <body>
-        
+  {% extends "base.html" %}
 
+  {% block title %} Profile {% endblock %}
 
-
-
+  {% block content %}
     <div class="row">
       <div class="small-12 columns">
         <h1>Profile</h1>
@@ -78,8 +68,4 @@
     </div> 
   </footer>
 
-    <script src="{{ STATIC_URL }}bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="{{ STATIC_URL }}bower_components/foundation/js/foundation.min.js"></script>
-    <script src="{{ STATIC_URL }}js/app.js"></script>
-  </body>
-</html>
+  {% endblock %}

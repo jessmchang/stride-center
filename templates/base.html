@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><% block title %> Stride Center <% endblock %></title>
+    <title>{% block title %} Stride Center {% endblock %}</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/app.css" />
     <script src="{{ STATIC_URL }}bower_components/modernizr/modernizr.js"></script>
   </head>
@@ -35,9 +35,14 @@
           </section>
         </nav>
 
-        <% block content %>
-        <% endblock %>
-  </body>
+        {% block content %}
 
+        {% endblock %}
+
+
+    <script src="{{ STATIC_URL }}bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}bower_components/foundation/js/foundation.min.js"></script>
+    <script src="{{ STATIC_URL }}js/app.js"></script>
+  </body>
 
 </html>
