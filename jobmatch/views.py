@@ -7,12 +7,17 @@ from django.contrib.auth.decorators import login_required, permission_required
 
 class RegisterForm(forms.Form):
 	email = forms.CharField(max_length=100)
-	password = forms.CharField(max_length=16)
-	conf_password = forms.CharField(max_length=16)
+	password = forms.CharField(max_length=16, widget=forms.PasswordInput)
+	confirm_password = forms.CharField(max_length=16, widget=forms.PasswordInput)
 
 def index(request):
 	if request.POST:
-		pass
+		register_form = RegisterForm(request.POST)
+		if register_form.is_valid():
+			User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
+			user = authenticate(username=request.POST['email'],password=request.POST['password'])
+			login(request, user)
+			return render_to_response('dashboard.html', context_instance=RequestContext(request))
 	else: 
 		register_form = RegisterForm()
 
@@ -25,7 +30,7 @@ def is_admin(request):
 
 def create_user(request):
 	if request.POST:
-		user = create_user(request.POST['email'], request.POST['email'], request.POST['password'])
+		user = User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
 		login(request, user)
 		redirect('dashboard')
 

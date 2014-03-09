@@ -26,7 +26,8 @@
 		</div>
 	</div>
 	<div class = "row">
-		<form method="POST" action="login">
+		<form method="POST" action="">
+			{% csrf_token %}
 			<div class = "large-4 columns">
 				Log in to your account!
 				<hr />
@@ -40,19 +41,12 @@
 			</div>
 		</form>
 
-		<form method="POST" action="register">
+		<form method="POST" action="">
+			{% csrf_token %}
 			<div class="large-4 columns">
 				New user? Sign up here!
 				<hr />
-				<label>Email
-			        <input type="text" placeholder="email" />
-			     </label>
-			     <label>Password
-			        <input type="password" placeholder="password" />
-			     </label>
-			     <label>Confirm Password
-			        <input type="password" placeholder="confirm password" />
-			     </label>
+				{{ register_form.as_p }}
 
 			     <input class="button" type="submit" value="Sign up!" />
 			</div>
