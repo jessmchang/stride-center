@@ -11,6 +11,8 @@ class LoginForm(forms.Form):
 	password = forms.CharField(max_length=16, widget=forms.PasswordInput)
 
 class RegisterForm(forms.Form):
+	first_name = forms.CharField(max_length=30)
+	last_name = forms.CharField(max_length=30)
 	email = forms.EmailField(max_length=100)
 	password = forms.CharField(min_length=6, max_length=16, widget=forms.PasswordInput)
 	confirm_password = forms.CharField(min_length=6, max_length=16, widget=forms.PasswordInput)
@@ -28,9 +30,11 @@ def index(request):
 	if request.POST:
 		login_form = LoginForm(request.POST)
 		if login_form.is_valid():
-			user = authenticate(username=request.POST['email'],password=request.POST['password'])
+			user = authenticate(username=request.POST['email'], 
+				password=request.POST['password'])
 			login(request, user)
-			return render_to_response('dashboard.html', context_instance=RequestContext(request))
+			return render_to_response('dashboard.html', 
+				context_instance=RequestContext(request))
 	else: 
 		login_form = LoginForm()
 
@@ -42,10 +46,19 @@ def register(request):
 	if request.POST:
 		register_form = RegisterForm(request.POST)
 		if register_form.is_valid():
-			User.objects.create_user(request.POST['email'], request.POST['email'], request.POST['password'])
-			user = authenticate(username=request.POST['email'],password=request.POST['password'])
+			user = User.objects.create_user(
+				request.POST['email'], 
+				request.POST['email'], 
+				request.POST['password'])
+			user.first_name=request.POST['first_name']
+			user.last_name=request.POST['last_name']
+			user.save()
+			user = authenticate(
+				username=request.POST['email'],
+				password=request.POST['password'])
 			login(request, user)
-			return render_to_response('dashboard.html', context_instance=RequestContext(request))
+			return render_to_response('dashboard.html', 
+				context_instance=RequestContext(request))
 	else: 
 		register_form = RegisterForm()
 
@@ -85,8 +98,10 @@ def logout_user(request):
 @login_required
 def dashboard(request):
 	jobs = Job.objects.all()
-	return render_to_response('dashboard.html', {'jobs': jobs}, context_instance=RequestContext(request))
+	return render_to_response('dashboard.html', {'jobs': jobs}, 
+		context_instance=RequestContext(request))
 
 @login_required
 def profile(request):
-	return render_to_response('profile.html', context_instance=RequestContext(request))
+	return render_to_response('profile.html', {'user': request.user}, 
+		context_instance=RequestContext(request))
