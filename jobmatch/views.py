@@ -44,8 +44,7 @@ def user_login(request):
 			user = authenticate(username=request.POST['email'], 
 				password=request.POST['password'])
 			login(request, user)
-			return render_to_response('dashboard.html', 
-				context_instance=RequestContext(request))
+			return redirect('/dashboard/')
 	else: 
 		login_form = LoginForm()
 

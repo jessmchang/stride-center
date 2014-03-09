@@ -23,10 +23,11 @@
         <div class="small-12 large-8 columns">
           {% for job in jobs %}
             <div class="panel animated fadeInRight"> 
-              <strong> {{job.company}} </strong>
+              <label class="header"> {{job.company}} </label>
               <hr />
               {{job.title}}
               <br /> {{ job.location }}
+              <br />
               <br />{{job.description}}</p>
             </div>
           {% endfor %}
