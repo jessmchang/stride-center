@@ -11,6 +11,9 @@ class RegisterForm(forms.Form):
 	confirm_password = forms.CharField(max_length=16, widget=forms.PasswordInput)
 
 def index(request):
+	return render_to_response('index.html', context_instance=RequestContext(request))
+
+def register(request):
 	if request.POST:
 		register_form = RegisterForm(request.POST)
 		if register_form.is_valid():
@@ -21,7 +24,7 @@ def index(request):
 	else: 
 		register_form = RegisterForm()
 
-	return render_to_response('index.html', 
+	return render_to_response('register.html', 
 		{ 'register_form': register_form }, 
 		context_instance=RequestContext(request))
 

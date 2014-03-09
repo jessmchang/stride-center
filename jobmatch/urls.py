@@ -6,6 +6,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^dashboard/', 'jobmatch.views.dashboard'),
     url(r'^profile/', 'jobmatch.views.profile'),
-    url(r'^register/', 'jobmatch.views.create_user'),
+    url(r'^register/', 'jobmatch.views.register'),
     url(r'^$', 'jobmatch.views.index'),
 )

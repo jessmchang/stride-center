@@ -28,16 +28,12 @@
 	<div class = "row">
 		<form method="POST" action="">
 			{% csrf_token %}
-			<div class = "large-4 columns">
-				Log in to your account!
+			<div class="large-4 columns">
+				New user? Sign up here!
 				<hr />
-				<label>Email
-			        <input type="text" placeholder="username" />
-			     </label>
-			     <label>Password
-			        <input type="password" placeholder="password" />
-			     </label>
-			     <input class="button" type="submit" value="Login" />
+				{{ register_form.as_p }}
+
+			     <input class="button" type="submit" value="Sign up!" />
 			</div>
 		</form>
 
