@@ -4,6 +4,7 @@ from django.template import RequestContext
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
+from jobmatch.models import *
 
 class LoginForm(forms.Form):
 	email = forms.EmailField(max_length=100)
@@ -84,7 +85,8 @@ def email_user(request):
 
 @login_required
 def dashboard(request):
-	return render_to_response('dashboard.html', context_instance=RequestContext(request))
+	jobs = Job.objects.all()
+	return render_to_response('dashboard.html', {'jobs': jobs}, context_instance=RequestContext(request))
 
 @login_required
 def profile(request):

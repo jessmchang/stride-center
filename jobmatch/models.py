@@ -11,13 +11,19 @@ class Address(models.Model):
 class Company(models.Model):
 	name = models.CharField(max_length=50)
 
+	def __str__(self):
+		return self.name
+
 class Job(models.Model):
 	company = models.ForeignKey(Company)
-	available = models.BooleanField()
 	full_time = models.BooleanField()
 	title = models.CharField(max_length=50)
 	salary = models.IntegerField()
 	description = models.TextField(max_length=800)
+
+	def __str__(self):
+		return self.company.name + ': ' + self.title
+
 
 # a job a student gained from a 3rd party
 class StudentJob(Job):
