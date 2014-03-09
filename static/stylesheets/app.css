@@ -9423,32 +9423,34 @@ h1, input, .font, .tabs dd > a {
 /* line 56, ../scss/app.scss */
 body, label, p {
   font-family: 'Open Sans', serif;
+  font-size: 10.5pt;
 }
 
-/* line 60, ../scss/app.scss */
+/* line 61, ../scss/app.scss */
 #main-content {
   margin: 44px 0 22px;
   padding-bottom: 22px;
 }
 
-/* line 65, ../scss/app.scss */
+/* line 66, ../scss/app.scss */
 .nav-color {
   background-color: #384751;
 }
 
-/* line 69, ../scss/app.scss */
+/* line 70, ../scss/app.scss */
 button, .button, .top-bar-section ul li > a {
   font-family: 'Montserrat', sans-serif;
   color: #C1B5AB;
   background: #539987;
 }
 
-/* line 75, ../scss/app.scss */
+/* line 76, ../scss/app.scss */
 label.header {
   font-family: 'Montserrat', sans-serif;
+  font-size: 12pt;
 }
 
-/* line 79, ../scss/app.scss */
+/* line 81, ../scss/app.scss */
 #id_email, #id_password {
   background-color: #C1B5AB;
   border: 0px;
