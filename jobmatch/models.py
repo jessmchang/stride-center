@@ -38,7 +38,7 @@ class UserProfile(models.Model):
 
 	# custom fields
 	address = models.ForeignKey(Location)
-	cellphone = models.IntegerField()
+	phone = models.IntegerField()
 
 	# looking for part/full time jobs
 	full_time = models.BooleanField()
