@@ -39,12 +39,16 @@
 //   "foundation/components/offcanvas",
 //   "foundation/components/visibility";
 
+html, body{
+	background-color: #ECECF0;
+}
+
 header{
 	background-color:#4A545F;
 	padding: 22px 0;
 }
 
-h1, input, .font, .tabs dd > a{
+h1, input, .font, .tabs dd > a,{
 	font-family: 'Montserrat', sans-serif;
 	color: #C1B5AB;
 }
@@ -68,3 +72,11 @@ button, .button, .top-bar-section ul li > a{
 	background: #539987;
 }
 
+label.header{
+	font-family: 'Montserrat', sans-serif;
+}
+
+#id_email, #id_password{
+	background-color: #C1B5AB;
+	border: 0px;
+}

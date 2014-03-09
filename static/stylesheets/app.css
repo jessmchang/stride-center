@@ -9404,36 +9404,52 @@ th.hide-for-touch {
 }
 
 /* line 42, ../scss/app.scss */
+html, body {
+  background-color: #ECECF0;
+}
+
+/* line 46, ../scss/app.scss */
 header {
   background-color: #4A545F;
   padding: 22px 0;
 }
 
-/* line 47, ../scss/app.scss */
+/* line 51, ../scss/app.scss */
 h1, input, .font, .tabs dd > a {
   font-family: 'Montserrat', sans-serif;
   color: #C1B5AB;
 }
 
-/* line 52, ../scss/app.scss */
+/* line 56, ../scss/app.scss */
 body, label, p {
   font-family: 'Open Sans', serif;
 }
 
-/* line 56, ../scss/app.scss */
+/* line 60, ../scss/app.scss */
 #main-content {
   margin: 44px 0 22px;
   padding-bottom: 22px;
 }
 
-/* line 61, ../scss/app.scss */
+/* line 65, ../scss/app.scss */
 .nav-color {
   background-color: #384751;
 }
 
-/* line 65, ../scss/app.scss */
+/* line 69, ../scss/app.scss */
 button, .button, .top-bar-section ul li > a {
   font-family: 'Montserrat', sans-serif;
   color: #C1B5AB;
   background: #539987;
+}
+
+/* line 75, ../scss/app.scss */
+label.header {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 79, ../scss/app.scss */
+#id_email, #id_password {
+  background-color: #C1B5AB;
+  border: 0px;
 }
