@@ -3,16 +3,34 @@
   {% block title %} Dashboard {% endblock %}
 
   {% block content %}
-    <div class="row">
-      <div class="small-4 large-8 columns">
-        {% for job in jobs %}
-          <div class="panel"> 
-            <strong> {{job.company}} </strong>
-            <br/> {{job.title}}
-            <br/> {{ job.location }}
-            <p>{{job.description}}</p>
-          </div>
-        {% endfor %}
+
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+      <div class = "row">
+        <div class = "small-12 large-12 columns">
+          <h1>Dashboard</h1>
+        </div>
       </div>
-    </div>
+    </header>
+
+    <!-- section for spacing -->
+    <section id = "main-content">
+      <div class="row">
+        <div class="small-12 large-8 columns">
+          {% for job in jobs %}
+            <div class="panel"> 
+              <strong> {{job.company}} </strong>
+              <br/> {{job.title}}
+              <br/> {{ job.location }}
+              <p>{{job.description}}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+  </body>
   {% endblock %}
+</html>
