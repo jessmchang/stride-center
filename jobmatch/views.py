@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 from jobmatch.models import *
+from jobmatch.decorators import *
 
 class LoginForm(forms.Form):
 	email = forms.EmailField(max_length=100)
@@ -26,7 +27,7 @@ class RegisterForm(forms.Form):
 
 	    return self.cleaned_data
 
-def index(request):
+def login(request):
 	if request.POST:
 		login_form = LoginForm(request.POST)
 		if login_form.is_valid():
