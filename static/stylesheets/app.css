@@ -9410,6 +9410,21 @@ header {
 }
 
 /* line 47, ../scss/app.scss */
+h1, input, button {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 51, ../scss/app.scss */
+.tabs dd > a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* line 55, ../scss/app.scss */
+body, a, label, p {
+  font-family: 'Tienne', serif;
+}
+
+/* line 59, ../scss/app.scss */
 #main-content {
   margin: 44px 0 22px;
   padding-bottom: 22px;
