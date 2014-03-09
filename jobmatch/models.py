@@ -25,6 +25,9 @@ class Job(models.Model):
 	salary = models.IntegerField()
 	description = models.TextField(max_length=800)
 
+	def __init__(self, *args, **kwargs):
+		super(Job, self).__init__(*args, **kwargs)
+
 	def __str__(self):
 		return self.company.name + ': ' + self.title
 
