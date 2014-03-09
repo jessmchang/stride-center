@@ -6,17 +6,27 @@
     <title>Register</title>
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/app.css" />
     <script src="{{ STATIC_URL }}bower_components/modernizr/modernizr.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300|Montserrat' rel='stylesheet' type='text/css'>
   </head>
   <body>
     <div class = "row">
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </div>  
+    <div class = "row">
     <form method="POST" action="">
       {% csrf_token %}
-      <div class="large-4 columns">
-        New user? Sign up here!
-        <hr />
+      <div class="small-8 large-3 small-centered columns">
+
+         <center><img src = "/static/img/logo.png" /></center>
+         <hr />
         {{ register_form.as_p }}
 
-           <input class="button" type="submit" value="Sign up!" />
+           <center><input class="button" type="submit" value="Sign up!" /></center>
       </div>
     </form>
 
