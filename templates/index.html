@@ -25,42 +25,44 @@
 			<hr />
 		</div>
 	</div>
-	<form>
 	<div class = "row">
-		<div class = "large-4 columns">
-			Log in to your account!
-			<hr />
-			<label>Email
-		        <input type="text" placeholder="username" />
-		     </label>
-		     <label>Password
-		        <input type="text" placeholder="password" />
-		     </label>
-		     <a href="#" class="button">Login</a>
-		</div>
+		<form method="POST" action="login">
+			<div class = "large-4 columns">
+				Log in to your account!
+				<hr />
+				<label>Email
+			        <input type="text" placeholder="username" />
+			     </label>
+			     <label>Password
+			        <input type="password" placeholder="password" />
+			     </label>
+			     <input class="button" type="submit" value="Login" />
+			</div>
+		</form>
 
-		<div class = "large-4 columns">
-			New user? Sign up here!
-			<hr />
-			<label>Email
-		        <input type="text" placeholder="email" />
-		     </label>
-		     <label>Password
-		        <input type="text" placeholder="password" />
-		     </label>
-		     <label>Confirm Password
-		        <input type="text" placeholder="confirm password" />
-		     </label>
+		<form method="POST" action="register">
+			<div class="large-4 columns">
+				New user? Sign up here!
+				<hr />
+				<label>Email
+			        <input type="text" placeholder="email" />
+			     </label>
+			     <label>Password
+			        <input type="password" placeholder="password" />
+			     </label>
+			     <label>Confirm Password
+			        <input type="password" placeholder="confirm password" />
+			     </label>
 
-		     <a href="#" class="button">Sign up!</a>
-		</div>
+			     <input class="button" type="submit" value="Sign up!" />
+			</div>
+		</form>
 
 		<div class = "large-4 columns">
 			
 		</div>
 
 	</div>
-	</form>
 	
   <script>
   document.write('<script src=' +
