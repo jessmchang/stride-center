@@ -28,7 +28,7 @@
         <div class="tabs-content vertical" style="width: 100%">
           <div class="content active" id="panel1a">
 
-            <div class="small-12 large-6 columns">
+            <div class="small-12 large-6 columns"><hr />
               <label class="header">Job Preferences</label><hr />
               <p><label class="header">Currently Searching?</label>  {% if profile.currently_searching %} Yes {% else %} No {% endif %}</p>
               <p> <label class="header">Type of Positions: </label>
@@ -40,13 +40,13 @@
               </p>
               <p> <label class="header">Location:</label>
               {% if location_range.zipcode %} I'm looking for jobs within {{ location_range.radius }} miles of {{ location_range.zipcode }} {% else %} Not Specified{% endif %}</p>
-              <label class="header">Resume</label>
+              <labels class="header">Resume</label>
             </div>
 
 
 
 
-            <div class="small-12 large-6 columns">
+            <div class="small-12 large-6 columns"><hr />
               <label class="header">Contact Information</label><hr />
 
               <p>{% if user.email %} <label class="header">Email: </label>{{ user.email }} {% endif %}</p>
