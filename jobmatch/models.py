@@ -61,7 +61,7 @@ class UserProfile(models.Model):
 
 	# resume = models.FileField()
 
-	# location
+	# location student is interested in finding jobs in
 	# location = 
 
 	jobs = models.ManyToManyField(StudentJob)

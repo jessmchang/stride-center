@@ -11,6 +11,14 @@ class LoginForm(forms.Form):
 	email = forms.EmailField(max_length=100)
 	password = forms.CharField(max_length=16, widget=forms.PasswordInput)
 
+	def clean(self):
+		user = authenticate(username=self.cleaned_data.get('email'), 
+				password=self.cleaned_data.get('password'))
+		if (user is None):
+			raise forms.ValidationError("Incorrect email/password combination")
+
+		return self.cleaned_data
+
 class RegisterForm(forms.Form):
 	first_name = forms.CharField(max_length=30)
 	last_name = forms.CharField(max_length=30)
