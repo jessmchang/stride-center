@@ -6,13 +6,22 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 
 class LoginForm(forms.Form):
-	email = forms.CharField(max_length=100)
+	email = forms.EmailField(max_length=100)
 	password = forms.CharField(max_length=16, widget=forms.PasswordInput)
 
 class RegisterForm(forms.Form):
-	email = forms.CharField(max_length=100)
-	password = forms.CharField(max_length=16, widget=forms.PasswordInput)
-	confirm_password = forms.CharField(max_length=16, widget=forms.PasswordInput)
+	email = forms.EmailField(max_length=100)
+	password = forms.CharField(min_length=6, max_length=16, widget=forms.PasswordInput)
+	confirm_password = forms.CharField(min_length=6, max_length=16, widget=forms.PasswordInput)
+
+	def clean(self):
+	    password = self.cleaned_data.get('password')
+	    confirm_password = self.cleaned_data.get('confirm_password')
+
+	    if password != confirm_password:
+	        raise forms.ValidationError("Passwords don't match")
+
+	    return self.cleaned_data
 
 def index(request):
 	if request.POST:
