@@ -42,11 +42,13 @@
                 <div class="content active" id="panel2-1">
                   <form action="/prefs/" method="POST">
                     {% csrf_token %}
+                    {{ location_range.zipcode }}
                     <!-- Location -->
                     <div class="row">
                       <div class="large-6 columns">
                         <label>Where are you looking to find a job?
-                          <input name="zipcode" type="text" placeholder="Zip Code: 94720">{{ profile.location_range.zipcode }}</input>
+                          <input name="zipcode" type="text" 
+                          placeholder="{% if location_range.zipcode %} {{ location_range.zipcode }} {% else %} Zip Code: 94720 {% endif %}"></input>
                         </label>
                       </div>
                       <div class="large-6 columns">

@@ -43,6 +43,9 @@ class UserLocationRange(models.Model):
 	def is_in_radius(self, job_location):
 		return haversine(self.get_lat_lng(), job_location.get_lat_lng(), miles=True) < self.radius
 
+	def __str__(self):
+		return str(self.zipcode) + ', ' + str(self.radius) + ' mi'
+
 class Company(models.Model):
 	name = models.CharField(max_length=50)
 

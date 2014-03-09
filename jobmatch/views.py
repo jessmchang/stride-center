@@ -92,12 +92,20 @@ def dashboard(request):
 @login_required
 def profile(request):
 	return render_to_response('profile.html', 
-		{'user': request.user, 'profile': request.user.get_profile()}, 
+		{'user': request.user, 
+		'profile': request.user.get_profile(),
+		'location_range': request.user.get_profile().location_range}, 
 		context_instance=RequestContext(request))
 
 @login_required
 def edit_prefs(request):
-	print('edit')
+	profile = request.user.get_profile()
 	if request.POST:
-		print(request.POST)
-	return redirect('/profile/')
+		profile.location_range = profile.location_range if profile.location_range else UserLocationRange()
+		profile.location_range.zipcode = int(request.POST['zipcode']) if request.POST['zipcode'] else profile.location_range.zipcode
+		profile.location_range.radius = int(request.POST['range']) if request.POST['range'] else profile.location_range.radius
+		profile.save()
+	print(profile.location_range)
+	return redirect('/profile/', {'user': request.user, 
+		'profile': request.user.get_profile(),
+		'location_range': request.user.get_profile().location_range})
