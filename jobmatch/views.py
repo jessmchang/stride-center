@@ -29,10 +29,6 @@ def create_user(request):
 		login(request, user)
 		redirect('dashboard')
 
-@login_required
-def dashboard(request):
-	return render_to_response('dashboard.html')
-
 def create_admin(request):
 	create_superuser(request.POST['username'], request.POST['email'], request.POST['password'])
 
@@ -52,3 +48,12 @@ def logout_user(request):
 
 def email_user(request):
 	request.POST['user'].email_user(request.POST['subject'], request.POST['message'])
+
+
+@login_required
+def dashboard(request):
+	return render_to_response('dashboard.html', context_instance=RequestContext(request))
+
+@login_required
+def profile(request):
+	return render_to_response('profile.html', context_instance=RequestContext(request))
