@@ -7,6 +7,22 @@ class Address(models.Model):
 	city = models.CharField(max_length=25)
 	state = models.CharField(max_length=25)
 
+
+class Company(models.Model):
+	name = models.CharField(max_length=50)
+
+class Job(models.Model):
+	company = models.ForeignKey(Company)
+	available = models.BooleanField()
+	full_time = models.BooleanField()
+	title = models.CharField(max_length=50)
+	salary = models.IntegerField()
+	description = models.TextField(max_length=800)
+
+# a job a student gained from a 3rd party
+class StudentJob(Job):
+	benefits = models.TextField()
+
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 
@@ -21,15 +37,9 @@ class UserProfile(models.Model):
 	# entry-level or advanced?
 	entry_level = models.BooleanField()
 
+	# resume = models.FileField()
+
 	# location
 	# location = 
 
-class Company(models.Model):
-	name = models.CharField(max_length=50)
-
-class Job(models.Model):
-	company = models.ForeignKey(Company)
-	full_time = models.BooleanField()
-	title = models.CharField(max_length=50)
-	salary = models.IntegerField()
-	description = models.CharField(max_length=800)
+	jobs = models.ManyToManyField(StudentJob)
