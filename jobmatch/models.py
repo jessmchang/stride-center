@@ -25,9 +25,9 @@ class Location(models.Model):
 
 
 class UserLocationRange(models.Model):
-	zipcode = models.IntegerField(blank=False)
+	zipcode = models.IntegerField(blank=True, null=True)
 	# of miles from zipcode
-	radius = models.IntegerField(blank=False)
+	radius = models.IntegerField(blank=False, default=20)
 
 	def get_lat_lng(self):
 		if self.lat and self.lng:
@@ -102,13 +102,15 @@ class UserProfile(models.Model):
 	currently_searching = models.BooleanField(default=True)
 
 	# location student is interested in finding jobs in
-	location_range = models.ForeignKey(UserLocationRange, blank=True, null=True)
+	location_range = models.OneToOneField(UserLocationRange)
 
 	jobs = models.ManyToManyField(StudentJob, blank=True, null=True)
 
 	def create_user_profile(sender, instance, created, **kwargs):
 		# only create profile for non-admins
 	    if created and not instance.is_staff:
-	        UserProfile.objects.create(user=instance)
+	    	location_range = UserLocationRange()
+	    	location_range.save()
+	        UserProfile.objects.create(user=instance, location_range=location_range)
 
 	post_save.connect(create_user_profile, sender=User)

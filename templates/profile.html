@@ -30,7 +30,7 @@
             <p>{% if user.email %} Email: {{ user.email }} {% endif %}</p>
             <p>{% if profile.address %} Address: {{ profile.address }} {% endif %}</p>
             <p>{% if profile.phone %} Phone Number: {{ profile.phone }} {% endif %}</p>
-            <p>{% if location_range %} Phone Number: {{ profile.phone }} {% endif %}</p>
+            <p>{% if location_range.zipcode %} I'm looking for jobs within {{ location_range.radius }} miles of {{ location_range.zipcode }} {% endif %}</p>
             Resume
           </div>
           <div class="content" id="panel3a">
@@ -43,7 +43,6 @@
                 <div class="content active" id="panel2-1">
                   <form action="/prefs/" method="POST">
                     {% csrf_token %}
-                    {{ location_range.zipcode }}
                     <!-- Location -->
                     <div class="row">
                       <div class="large-6 columns">
