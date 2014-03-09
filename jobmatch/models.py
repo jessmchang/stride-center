@@ -61,7 +61,7 @@ class Job(models.Model):
 		# auto email students that match
 		users = User.objects.all()
 		for user in users:
-			if user.location_range.is_in_radius(self.location):
+			if user.location_range && user.location_range.is_in_radius(self.location):
 				send_mail('New Job Opportunity!', 'Check out this cool new job.', 'smitha.milli@gmail.com',
     			[user.email], fail_silently=False)
 
@@ -84,10 +84,18 @@ class UserProfile(models.Model):
 	full_time = models.BooleanField()
 	part_time = models.BooleanField()
 
-	# entry-level or advanced?
+	# experience level
 	entry_level = models.BooleanField()
+	advanced = models.BooleanField()
 
 	# resume = models.FileField()
+
+	# notifications
+	text_notifications = models.BooleanField()
+	email_notifications = models.BooleanField()
+
+	# currently searching for a job
+	currently_searching = models.BooleanField()
 
 	# location student is interested in finding jobs in
 	location_range = models.ForeignKey(UserLocationRange)
