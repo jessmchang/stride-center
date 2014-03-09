@@ -5,13 +5,28 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required, permission_required
 
+class LoginForm(forms.Form):
+	email = forms.CharField(max_length=100)
+	password = forms.CharField(max_length=16, widget=forms.PasswordInput)
+
 class RegisterForm(forms.Form):
 	email = forms.CharField(max_length=100)
 	password = forms.CharField(max_length=16, widget=forms.PasswordInput)
 	confirm_password = forms.CharField(max_length=16, widget=forms.PasswordInput)
 
 def index(request):
-	return render_to_response('index.html', context_instance=RequestContext(request))
+	if request.POST:
+		login_form = LoginForm(request.POST)
+		if login_form.is_valid():
+			user = authenticate(username=request.POST['email'],password=request.POST['password'])
+			login(request, user)
+			return render_to_response('dashboard.html', context_instance=RequestContext(request))
+	else: 
+		login_form = LoginForm()
+
+	return render_to_response('index.html', 
+		{ 'login_form': login_form },
+		context_instance=RequestContext(request))
 
 def register(request):
 	if request.POST:
