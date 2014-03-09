@@ -103,5 +103,6 @@ def dashboard(request):
 
 @login_required
 def profile(request):
-	return render_to_response('profile.html', {'user': request.user}, 
+	return render_to_response('profile.html', 
+		{'user': request.user, 'profile': request.user.get_profile()}, 
 		context_instance=RequestContext(request))

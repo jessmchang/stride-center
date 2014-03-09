@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.core.mail import send_mail
+from django.db.models.signals import post_save
 from localflavor.us.models import USStateField
 from haversine import haversine
 import requests
@@ -77,28 +78,35 @@ class StudentJob(Job):
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
 
-	# custom fields
-	address = models.ForeignKey(Location)
-	phone = models.IntegerField()
+	# contact info
+	address = models.ForeignKey(Location, blank=True, null=True)
+	phone = models.IntegerField(blank=True, null=True)
 
 	# looking for part/full time jobs
-	full_time = models.BooleanField()
-	part_time = models.BooleanField()
+	full_time = models.BooleanField(default=True)
+	part_time = models.BooleanField(default=False)
 
 	# experience level
-	entry_level = models.BooleanField()
-	advanced = models.BooleanField()
+	entry_level = models.BooleanField(default=True)
+	advanced = models.BooleanField(default=False)
 
 	# resume = models.FileField()
 
 	# notifications
-	text_notifications = models.BooleanField()
-	email_notifications = models.BooleanField()
+	text_notifications = models.BooleanField(default=False)
+	email_notifications = models.BooleanField(default=False)
 
 	# currently searching for a job
-	currently_searching = models.BooleanField()
+	currently_searching = models.BooleanField(default=True)
 
 	# location student is interested in finding jobs in
-	location_range = models.ForeignKey(UserLocationRange)
+	location_range = models.ForeignKey(UserLocationRange, blank=True, null=True)
 
-	jobs = models.ManyToManyField(StudentJob)
+	jobs = models.ManyToManyField(StudentJob, blank=True, null=True)
+
+	def create_user_profile(sender, instance, created, **kwargs):
+		# only create profile for non-admins
+	    if created and not instance.is_staff:
+	        UserProfile.objects.create(user=instance)
+
+	post_save.connect(create_user_profile, sender=User)
